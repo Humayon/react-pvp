@@ -6,7 +6,7 @@ export class App extends Component {
   state = {
     p1Scores: 1,
     p2Scores: 1,
-    gameOver: true
+    gameOver: false
   };
 
   handleP1 = () => {
@@ -24,7 +24,7 @@ export class App extends Component {
     this.setState({
       p1Scores: 1,
       p2Scores: 1,
-      gameOver: true
+      gameOver: false
     });
   };
 
@@ -45,8 +45,8 @@ export class App extends Component {
               onClick={this.handleP1}
               disabled={
                 this.state.p1Scores === 5 || this.state.p2Scores === 5
-                  ? this.state.gameOver
-                  : !this.state.gameOver
+                  ? !this.state.gameOver
+                  : this.state.gameOver
               }
             >
               Player 1
@@ -58,8 +58,8 @@ export class App extends Component {
               onClick={this.handleP2}
               disabled={
                 this.state.p1Scores === 5 || this.state.p2Scores === 5
-                  ? this.state.gameOver
-                  : !this.state.gameOver
+                  ? !this.state.gameOver
+                  : this.state.gameOver
               }
             >
               Player 2
@@ -72,8 +72,8 @@ export class App extends Component {
           </div>
           <div className="col-md-12">Winning Score is 5</div>
           <div className="col-md-12">
-            {this.state.p1Scores === 5 ||
-              (this.state.p2Scores === 5 && 'Game Over')}
+            {(this.state.p1Scores === 5 || this.state.p2Scores === 5) &&
+              'Game Over'}
           </div>
         </div>
       </div>
